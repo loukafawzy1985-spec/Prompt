@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alaa Fawzy Mahmoud Adam | Interactive Digital CV & EdTech Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            500: '#10b981',
+                            600: '#059669',
+                            cyan: '#06b6d4',
+                            purple: '#8b5cf6',
+                            dark: '#0f172a',
+                            card: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            background-color: #090d16;
+            color: #f1f5f9;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.75);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-effect {
+            position: relative;
+        }
+        .glow-effect::after {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, #06b6d4, #8b5cf6, #10b981);
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .glow-effect:hover::after {
+            opacity: 0.6;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-pop {
+            animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; color: black !important; }
+            .glass-card { background: white !important; border: 1px solid #ccc !important; color: black !important; }
+            .text-gray-300, .text-gray-400, .text-slate-300, .text-slate-400 { color: #333 !important; }
+            .text-white { color: #000 !important; }
+        }
+    </style>
+</head>
+<body class="custom-scrollbar min-h-screen selection:bg-cyan-500 selection:text-white pb-12">
+
+    <!-- Header / Navigation Bar -->
+    <header class="sticky top-0 z-40 glass-card border-b border-slate-800/80 px-4 lg:px-8 py-3 no-print">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer group" onclick="openPhotoModal()">
+                <div class="relative">
+                    <img src="https://i.ibb.co/mVNDv4TJ/1000336374-2.png" alt="Alaa Fawzy" class="w-11 h-11 rounded-xl object-cover border-2 border-cyan-400 shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition" onerror="this.src='https://ibb.co/mVNDv4TJ'">
+                    <span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-slate-900 rounded-full"></span>
+                </div>
+                <div>
+                    <h1 class="font-bold text-base md:text-lg text-white leading-tight group-hover:text-cyan-400 transition flex items-center gap-1.5">
+                        Alaa Fawzy Mahmoud Adam
+                        <i class="fa-solid fa-circle-check text-cyan-400 text-xs" title="Verified ICT Teacher"></i>
+                    </h1>
+                    <p class="text-xs text-cyan-400 font-medium">ICT Educational Leader & AI Specialist</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button onclick="window.print()" class="hidden md:flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs px-4 py-2 rounded-lg transition border border-slate-700">
+                    <i class="fa-solid fa-print"></i> Print / PDF
+                </button>
+                <button onclick="openContactModal()" class="bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-600 hover:to-emerald-600 text-white font-semibold text-xs px-4 py-2 rounded-lg shadow-md hover:shadow-cyan-500/25 transition flex items-center gap-2">
+                    <i class="fa-solid fa-address-card"></i> Contact Me
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 lg:px-8 pt-8 space-y-8">
+
+        <!-- Hero & Profile Section -->
+        <section class="glass-card rounded-2xl p-6 lg:p-8 relative overflow-hidden">
+            <div class="absolute -top-24 -left-24 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                <!-- Info Column -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xs font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                        16+ Years Experience in K-12 & EdTech Leadership
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.ibb.co/mVNDv4TJ/1000336374-2.png" alt="Alaa Fawzy" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover border-2 border-cyan-400 cursor-pointer hover:scale-105 transition shadow-lg shadow-cyan-500/20" onclick="openPhotoModal()" onerror="this.src='https://ibb.co/mVNDv4TJ'">
+                        <div>
+                            <h2 class="text-2xl lg:text-3xl font-extrabold text-white leading-tight cursor-pointer hover:text-cyan-300 transition" onclick="openPhotoModal()">
+                                <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-emerald-400 to-purple-400">Alaa Fawzy Mahmoud Adam</span>
+                            </h2>
+                            <p class="text-xs text-slate-400 mt-1 flex items-center gap-2">
+                                <i class="fa-solid fa-image text-cyan-400"></i> Click image to open interactive poster
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-slate-300 text-sm lg:text-base leading-relaxed text-justify">
+                        Dedicated ICT Educational Leader and Computer Teacher with over 16 years of expertise in K-12 technology integration, curriculum delivery, and team leadership. Specialized in leveraging AI in education, instructional design, gamification, and digital animation to build engaging and productive learning environments.
+                    </p>
+
+                    <!-- Contact Details Badges -->
+                    <div class="flex flex-wrap gap-3 pt-2 text-xs">
+                        <div class="flex items-center gap-2 bg-slate-800/80 px-3 py-2 rounded-lg text-slate-300 border border-slate-700 cursor-pointer hover:border-cyan-500 transition" onclick="openContactModal()">
+                            <i class="fa-solid fa-location-dot text-cyan-400"></i> Alexandria, Egypt
+                        </div>
+                        <a href="tel:+201006808425" class="flex items-center gap-2 bg-slate-800/80 px-3 py-2 rounded-lg text-slate-300 border border-slate-700 hover:text-cyan-400 transition">
+                            <i class="fa-solid fa-phone text-emerald-400"></i> +20 100 680 8425
+                        </a>
+                        <div class="flex items-center gap-2 bg-slate-800/80 px-3 py-2 rounded-lg text-slate-300 border border-slate-700">
+                            <i class="fa-solid fa-graduation-cap text-purple-400"></i> B.Ed. in Biology (Alexandria Univ.)
+                        </div>
+                        <div class="flex items-center gap-2 bg-slate-800/80 px-3 py-2 rounded-lg text-slate-300 border border-slate-700">
+                            <i class="fa-solid fa-language text-yellow-400"></i> Arabic (Native) | English (B2 Upper-Int.)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats Badge Card -->
+                <div class="grid grid-cols-2 gap-4 border-t lg:border-t-0 lg:border-l border-slate-800 pt-6 lg:pt-0 lg:pl-8">
+                    <div class="glass-card p-4 rounded-xl border border-slate-800 text-center hover:border-cyan-500/50 transition cursor-pointer" onclick="openPhotoModal()">
+                        <div class="text-3xl font-extrabold text-cyan-400">16+</div>
+                        <div class="text-xs text-slate-400 font-medium mt-1">Years Teaching Experience</div>
+                    </div>
+                    <div class="glass-card p-4 rounded-xl border border-slate-800 text-center hover:border-purple-500/50 transition">
+                        <div class="text-3xl font-extrabold text-purple-400">20+</div>
+                        <div class="text-xs text-slate-400 font-medium mt-1">AI & EdTech Tools Mastered</div>
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1ZsYinmZ8BQQE9DbkJzoFlflvFBNWLEMv" target="_blank" class="glass-card p-4 rounded-xl border border-slate-800 text-center hover:border-emerald-500/50 transition group">
+                        <div class="text-3xl font-extrabold text-emerald-400 group-hover:scale-110 transition"><i class="fa-solid fa-clapperboard"></i></div>
+                        <div class="text-xs text-emerald-300 font-semibold mt-1">AI Video Portfolio</div>
+                    </a>
+                    <a href="https://drive.google.com/drive/folders/1cnqTZ4k4VcXdZ44InJqsLiDJfK1VV_ZR" target="_blank" class="glass-card p-4 rounded-xl border border-slate-800 text-center hover:border-amber-500/50 transition group">
+                        <div class="text-3xl font-extrabold text-amber-400 group-hover:scale-110 transition"><i class="fa-solid fa-certificate"></i></div>
+                        <div class="text-xs text-amber-300 font-semibold mt-1">Certificates Drive</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO LINK & SHOWCASE SECTION -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Animation Videos Portfolio Box -->
+            <div class="glass-card p-6 rounded-2xl border border-emerald-500/30 hover:border-emerald-500/60 transition relative overflow-hidden group">
+                <div class="flex items-start justify-between">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-2xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-film"></i>
+                    </div>
+                    <span class="text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-full font-semibold">Google Drive Folder</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mt-4">AI & Educational Animation Videos</h3>
+                <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                    Explore a dedicated library of custom AI-generated animation videos, interactive lesson clips, and creative multimedia courseware crafted for ICT classes.
+                </p>
+                <a href="https://drive.google.com/drive/folders/1ZsYinmZ8BQQE9DbkJzoFlflvFBNWLEMv" target="_blank" class="inline-flex items-center gap-2 mt-5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white text-xs font-bold px-5 py-2.5 rounded-xl shadow-lg transition">
+                    <i class="fa-brands fa-google-drive text-base"></i> Open Animation Videos Drive
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+            </div>
+
+            <!-- Certificates Drive Gallery Box -->
+            <div class="glass-card p-6 rounded-2xl border border-amber-500/30 hover:border-amber-500/60 transition relative overflow-hidden group">
+                <div class="flex items-start justify-between">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 text-2xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <span class="text-xs bg-amber-500/20 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-full font-semibold">Official Credentials Drive</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mt-4">Certificates & Badges Gallery</h3>
+                <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                    Direct access to official certificates including Gemini Certified Educator, Dubai 1M Prompters, Adobe Generative AI Diploma, and Microsoft Credentials.
+                </p>
+                <a href="https://drive.google.com/drive/folders/1cnqTZ4k4VcXdZ44InJqsLiDJfK1VV_ZR" target="_blank" class="inline-flex items-center gap-2 mt-5 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white text-xs font-bold px-5 py-2.5 rounded-xl shadow-lg transition">
+                    <i class="fa-solid fa-images text-base"></i> View Certificates Gallery
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+            </div>
+
+        </section>
+
+        <!-- Interactive AI Assistant Box -->
+        <section class="glass-card rounded-2xl p-6 border border-cyan-500/30 no-print">
+            <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-r from-cyan-500 to-purple-500 flex items-center justify-center text-white text-sm">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white text-sm">AI Resume Assistant</h3>
+                        <p class="text-xs text-slate-400">Instant AI answers for recruiters & school hiring team</p>
+                    </div>
+                </div>
+                <span class="text-xs bg-emerald-500/10 text-emerald-400 px-2.5 py-1 rounded-full border border-emerald-500/20">Interactive</span>
+            </div>
+
+            <div class="space-y-3">
+                <p class="text-xs text-slate-300">Click a query to learn more about Alaa Fawzy Mahmoud Adam:</p>
+                <div class="flex flex-wrap gap-2" id="ai-questions-container">
+                    <button onclick="askAI('summary')" class="text-xs bg-slate-800 hover:bg-cyan-950 hover:text-cyan-400 border border-slate-700 hover:border-cyan-500/50 text-slate-300 px-3 py-1.5 rounded-lg transition">
+                        💡 What makes Alaa stand out in EdTech & AI?
+                    </button>
+                    <button onclick="askAI('ai_tools')" class="text-xs bg-slate-800 hover:bg-cyan-950 hover:text-cyan-400 border border-slate-700 hover:border-cyan-500/50 text-slate-300 px-3 py-1.5 rounded-lg transition">
+                        🤖 Which AI tools & video platforms does she utilize?
+                    </button>
+                    <button onclick="askAI('leadership')" class="text-xs bg-slate-800 hover:bg-cyan-950 hover:text-cyan-400 border border-slate-700 hover:border-cyan-500/50 text-slate-300 px-3 py-1.5 rounded-lg transition">
+                        👥 What is her leadership & curriculum experience?
+                    </button>
+                    <button onclick="askAI('certs')" class="text-xs bg-slate-800 hover:bg-cyan-950 hover:text-cyan-400 border border-slate-700 hover:border-cyan-500/50 text-slate-300 px-3 py-1.5 rounded-lg transition">
+                        🎓 What are her top global certifications?
+                    </button>
+                </div>
+
+                <!-- Answer Output Box -->
+                <div id="ai-answer-box" class="hidden mt-4 p-4 rounded-xl bg-slate-900/90 border border-cyan-500/30 text-xs text-slate-200 leading-relaxed">
+                    <div class="flex items-start gap-2">
+                        <i class="fa-solid fa-sparkles text-cyan-400 mt-0.5"></i>
+                        <div id="ai-answer-text"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications & AI Specializations Showcase -->
+        <section class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-award text-cyan-400"></i> Major Certifications & AI Specializations
+                </h3>
+                <a href="https://drive.google.com/drive/folders/1cnqTZ4k4VcXdZ44InJqsLiDJfK1VV_ZR" target="_blank" class="text-xs text-cyan-400 hover:underline flex items-center gap-1">
+                    <i class="fa-solid fa-folder-open"></i> Open Drive Certificates
+                </a>
+            </div>
+
+            <!-- GRID EXPANDED TO 9 CARDS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                
+                <!-- Cert 1 (Gemini) -->
+                <div class="glass-card p-5 rounded-xl border border-slate-800 hover:border-cyan-500/50 transition glow-effect group">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-2xl group-hover:scale-110 transition">
+                            <i class="fa-brands fa-google"></i>
+                        </div>
+                        <span class="text-[10px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-2 py-0.5 rounded-full">Oct 2025 - Oct 2028</span>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mt-3">Gemini Certified Educator</h4>
+                    <p class="text-xs text-slate-400 mt-1">Google for Education</p>
+                    <p class="text-xs text-slate-300 mt-2">Certified globally in integrating Google's Gemini AI ecosystem into digital teaching workflows and learning environments.</p>
+                </div>
+
+                <!-- Cert 2 (Dubai Prompters - Updated Logo) -->
+                <div class="glass-card p-5 rounded-xl border border-slate-800 hover:border-purple-500/50 transition glow-effect group">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 rounded-lg bg-slate-800/80 border border-slate-700 flex items-center justify-center p-1.5 group-hover:scale-110 transition overflow-hidden">
+                            <img src="https://i.ibb.co/YBy9w2wH/images.png" alt="Dubai Future Foundation" class="w-full h-full object-contain">
+                        </div>
+                        <span class="text-[10px] bg-purple-500/10 text-purple-400 border border-purple-500/20 px-2 py-0.5 rounded-full">2026</span>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mt-3">One Million Prompters Certification</h4>
+                    <p class="text-xs text-slate-400 mt-1">Dubai Future Foundation</p>
+                    <p class="text-xs text-slate-300 mt-2">Specialized in advanced Prompt Engineering for precise educational content design and AI output optimization.</p>
+                </div>
+
+                <!-- Cert 3 (Teach-O-Gen - Updated Logo) -->
+                <div class="glass-card p-5 rounded-xl border border-slate-800 hover:border-teal-500/50 transition glow-effect group">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 rounded-lg bg-slate-800/80 border border-slate-700 flex items-center justify-center p-1 group-hover:scale-110 transition overflow-hidden">
+                            <img src="https://i.ibb.co/VcBtjXZ5/495833982-1111143314381174-2082057575304080718-n.jpg" alt="Teach-O-Gen" class="w-full h-full object-contain rounded">
+                        </div>
+                        <span class="text-[10px] bg-teal-500/10 text-teal-400 border border-teal-500/20 px-2 py-0.5 rounded-full">Grade: A | 16 Hours</span>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mt-3">Artificial Intelligence in Education</h4>
+                    <p class="text-xs text-slate-400 mt-1">TEACH-O-GEN</p>
+                    <p class="text-xs text-slate-300 mt-2">Successfully completed with distinction (Grade A). Comprehensive training on implementing AI methodologies within educational contexts.</p>
+                </div>
+
+                <!-- Cert 4 (Adobe - Updated Logo) -->
+                <div class="glass-card p-5 rounded-xl border border-slate-800 hover:border-red-500/50 transition glow-effect group">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 rounded-lg bg-slate-800/80 border border-slate-700 flex items-center justify-center p-1.5 group-hover:scale-110 transition overflow-hidden">
+                            <img src="https://i.ibb.co/vxs3MPct/277754775-2160226497486627-296597226595456983-n.jpg" alt="Adobe Academy" class="w-full h-full object-contain rounded">
+                        </div>
+                        <span class="text-[10px] bg-red-500/10 text-red-400 border border-red-500/20 px-2 py-0.5 rounded-full">6-Month Diploma</span>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mt-3">Generative AI for Creatives</h4>
+                    <p class="text-xs text-slate-400 mt-1">Adobe Academy EGY</p>
+                    <p class="text-xs text-slate-300 mt-2">Comprehensive 6-month diploma covering AI image/video generation, prompt aesthetics, and multimedia courseware.</p>
+                </div>
+
+                <!-- Cert 5 (Microsoft Elevate Expert Badge) -->
+                <div class="glass-card p-5 rounded-xl border border-slate-800 hover:border-blue-500/50 transition glow-effect group">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 rounded-lg bg-slate-800/80 border border-slate-700 flex items-center justify-center p-1 group-hover:scale-110 transition overflow-hidden">
+                            <img src="https://i.ibb.co/k2KPM3GQ/blob.png" alt="Microsoft Elevate Educator Expert Badge" class="w-full h-full object-contain drop-shadow-md">
+                        </div>
+                        <span class="text-[10px] bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2 py-0.5 rounded-full">2026 - 2027</span>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mt-3">Microsoft Elevate Educator Expert</h4>
+                    <p class="text-xs text-slate-400 mt-1">Certificate of Recognition</p>
+                    <p class="text-xs text-slate-300 mt-2">Recognized globally by Microsoft as an Expert Educator for advanced integration of Microsoft tools and AI literacy.</p>
+                </div>
+
+                <!-- Cert 6 (PTT Teaching Tech - Updated Logo) -->
+                <div class="glass-card p-5 rounded-xl border border-slate-800 hover:border-indigo-500/50 transition glow-effect group">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 rounded-lg bg-slate-800/80 border border-slate-700 flex items-center justify-center p-1.5 group-hover:scale-110 transition overflow-hidden">
+                            <img src="https://i.ibb.co/ppFvrPR/495833982-1111143314381174-2082057575304080718-n-1.jpg" alt="PTT Company" class="w-full h-full object-contain rounded">
+                        </div>
+                        <span class="text-[10px] bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2 py-0.5 rounded-full">Jul - Sep 2024</span>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mt-3">Teaching Technology Course</h4>
+                    <p class="text-xs text-slate-400 mt-1">PTT Company</p>
+                    <p class="text-xs text-slate-300 mt-2">Studied and applied 20+ EdTech tools including Canva, Gamma, Renderforest, Poe, Kahoot, and ElevenLabs in teaching.</p>
+                </div>
+
+                <!-- Cert 7 (PTT Hack Your Classroom - Updated Logo) -->
+                <div class="glass-card p-5 rounded-xl border border-slate-800 hover:border-pink-500/50 transition glow-effect group">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 rounded-lg bg-slate-800/80 border border-slate-700 flex items-center justify-center p-1.5 group-hover:scale-110 transition overflow-hidden">
+                            <img src="https://i.ibb.co/ppFvrPR/495833982-1111143314381174-2082057575304080718-n-1.jpg" alt="PTT Company" class="w-full h-full object-contain rounded">
+                        </div>
+                        <span class="text-[10px] bg-pink-500/10 text-pink-400 border border-pink-500/20 px-2 py-0.5 rounded-full">8 Hours | Sep 2025</span>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mt-3">Hack Your Classroom</h4>
+                    <p class="text-xs text-slate-400 mt-1">PTT Company</p>
+                    <p class="text-xs text-slate-300 mt-2">Demonstrated mastery in transforming classroom chaos, designing smart rules, and applying a 52-solution toolbox for daily challenges.</p>
+                </div>
+
+                <!-- Cert 8 (Canva - Updated Logo) -->
+                <div class="glass-card p-5 rounded-xl border border-slate-800 hover:border-cyan-500/50 transition glow-effect group">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 rounded-lg bg-slate-800/80 border border-slate-700 flex items-center justify-center p-1 group-hover:scale-110 transition overflow-hidden">
+                            <img src="https://i.ibb.co/fTMDPZS/images.jpg" alt="Canva Design School" class="w-full h-full object-contain rounded">
+                        </div>
+                        <span class="text-[10px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 px-2 py-0.5 rounded-full">ID: 12cf5a</span>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mt-3">Canva Essentials Certified</h4>
+                    <p class="text-xs text-slate-400 mt-1">Canva Design School (Oct 2024)</p>
+                    <p class="text-xs text-slate-300 mt-2">Mastery of visual design, interactive classroom presentations, and educational infographics creation.</p>
+                </div>
+
+                <!-- Cert 9 (Microsoft Professional Credentials - Updated Logo) -->
+                <div class="glass-card p-5 rounded-xl border border-slate-800 hover:border-blue-400/50 transition glow-effect group">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 rounded-lg bg-slate-800/80 border border-slate-700 flex items-center justify-center p-1.5 group-hover:scale-110 transition overflow-hidden">
+                            <img src="https://i.ibb.co/kgBrBfyP/Microsoft-Certified-Professional-logo.jpg" alt="Microsoft Certified Professional" class="w-full h-full object-contain rounded">
+                        </div>
+                        <span class="text-[10px] bg-blue-400/10 text-blue-300 border border-blue-400/20 px-2 py-0.5 rounded-full">Technical Credentials</span>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mt-3">Microsoft Professional Credentials</h4>
+                    <p class="text-xs text-slate-400 mt-1">MCP, MCAD, MCSD, ICDL</p>
+                    <p class="text-xs text-slate-300 mt-2">Technical foundation in software development, database design, VB.Net, and Microsoft core solutions.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Interactive Work Experience Timeline -->
+        <section class="space-y-6">
+            <div class="flex items-center justify-between">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-briefcase text-emerald-400"></i> Professional Career Timeline
+                </h3>
+                <span class="text-xs text-slate-400">Click any position to toggle details</span>
+            </div>
+
+            <div class="relative border-l-2 border-slate-800 ml-4 lg:ml-6 space-y-8">
+
+                <!-- Job 1 -->
+                <div class="relative pl-8 group cursor-pointer" onclick="toggleJobDetails('job1')">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-cyan-500 ring-4 ring-slate-900 group-hover:scale-125 transition"></div>
+                    
+                    <div class="glass-card p-5 rounded-xl border border-slate-800 hover:border-cyan-500/50 transition">
+                        <div class="flex flex-wrap justify-between items-start gap-2">
+                            <div>
+                                <h4 class="text-base font-bold text-white group-hover:text-cyan-400 transition">ICT Teacher & Team Leader for Upper Primary Stage</h4>
+                                <p class="text-xs text-cyan-400 font-semibold mt-0.5">Salah-Aldin International School (SIS)</p>
+                            </div>
+                            <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">2020 - Present</span>
+                        </div>
+                        <p class="text-xs text-slate-300 mt-3 leading-relaxed">
+                            • Lead the ICT team to align curriculum standards and educational technology goals.<br>
+                            • Design and deliver interactive computer science curricula, gamified lessons, and hands-on technology projects for upper primary students.
+                        </p>
+                        <div id="job1-details" class="mt-3 pt-3 border-t border-slate-800 text-xs text-slate-400 flex flex-wrap gap-2">
+                            <span class="bg-cyan-500/10 text-cyan-300 px-2 py-0.5 rounded">Team Leadership</span>
+                            <span class="bg-purple-500/10 text-purple-300 px-2 py-0.5 rounded">Curriculum Alignment</span>
+                            <span class="bg-emerald-500/10 text-emerald-300 px-2 py-0.5 rounded">Gamification</span>
+                            <span class="bg-amber-500/10 text-amber-300 px-2 py-0.5 rounded">AI Integration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="relative pl-8 group cursor-pointer" onclick="toggleJobDetails('job2')">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-purple-500 ring-4 ring-slate-900 group-hover:scale-125 transition"></div>
+                    
+                    <div class="glass-card p-5 rounded-xl border border-slate-800 hover:border-purple-500/50 transition">
+                        <div class="flex flex-wrap justify-between items-start gap-2">
+                            <div>
+                                <h4 class="text-base font-bold text-white group-hover:text-purple-400 transition">Computer Teacher (Junior, Middle & Senior)</h4>
+                                <p class="text-xs text-purple-400 font-semibold mt-0.5">Egyptian English Language School (EELS)</p>
+                            </div>
+                            <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">2015 - 2020</span>
+                        </div>
+                        <p class="text-xs text-slate-300 mt-3 leading-relaxed">
+                            • Taught Computer Studies across both National and Cambridge Primary Program (CPP) departments.<br>
+                            • Designed practical assessments, managed digital literacy projects, and facilitated student technology competitions.
+                        </p>
+                        <div id="job2-details" class="mt-3 pt-3 border-t border-slate-800 text-xs text-slate-400 flex flex-wrap gap-2">
+                            <span class="bg-purple-500/10 text-purple-300 px-2 py-0.5 rounded">Cambridge Primary Program (CPP)</span>
+                            <span class="bg-blue-500/10 text-blue-300 px-2 py-0.5 rounded">National Curriculum</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="relative pl-8 group cursor-pointer" onclick="toggleJobDetails('job3')">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-emerald-500 ring-4 ring-slate-900 group-hover:scale-125 transition"></div>
+                    
+                    <div class="glass-card p-5 rounded-xl border border-slate-800 hover:border-emerald-500/50 transition">
+                        <div class="flex flex-wrap justify-between items-start gap-2">
+                            <div>
+                                <h4 class="text-base font-bold text-white group-hover:text-emerald-400 transition">Computer Teacher (Elementary, Middle & High School)</h4>
+                                <p class="text-xs text-emerald-400 font-semibold mt-0.5">Egyptian American School (EAS)</p>
+                            </div>
+                            <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-full border border-slate-700">2010 - 2015</span>
+                        </div>
+                        <p class="text-xs text-slate-300 mt-3 leading-relaxed">
+                            • Instructed IT and computing classes across elementary, middle, and high school levels.<br>
+                            • Developed foundational computer skills, hardware concepts, and basic programming logic for students.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Call To Action Footer Section -->
+        <section class="glass-card rounded-2xl p-8 text-center border border-slate-800 relative overflow-hidden">
+            <h3 class="text-2xl font-extrabold text-white">Looking for an EdTech Leader to Transform Your School?</h3>
+            <p class="text-slate-400 text-xs sm:text-sm mt-2 max-w-2xl mx-auto">
+                Ready to elevate your institution's computing curriculum and empower faculty with state-of-the-art AI teaching tools.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4 mt-6">
+                <button onclick="openContactModal()" class="bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-600 hover:to-emerald-600 text-white font-bold text-xs px-6 py-3 rounded-xl shadow-lg shadow-cyan-500/20 transition flex items-center gap-2">
+                    <i class="fa-solid fa-address-card"></i> Contact Me Directly
+                </button>
+                <a href="https://drive.google.com/drive/folders/1ZsYinmZ8BQQE9DbkJzoFlflvFBNWLEMv" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-emerald-400 font-bold text-xs px-6 py-3 rounded-xl border border-slate-700 transition flex items-center gap-2">
+                    <i class="fa-solid fa-play"></i> Watch Animation Videos
+                </a>
+                <button onclick="window.print()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs px-6 py-3 rounded-xl border border-slate-700 transition flex items-center gap-2">
+                    <i class="fa-solid fa-file-pdf text-red-400"></i> Download PDF
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Copyright -->
+    <footer class="text-center text-xs text-slate-500 mt-12">
+        <p>© 2026 Alaa Fawzy Mahmoud Adam - All Rights Reserved | Interactive Web CV & EdTech Portfolio</p>
+    </footer>
+
+    <!-- MODAL 1: PHOTO AVATAR MODAL -->
+    <div id="photo-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4" onclick="closePhotoModal(event)">
+        <div class="relative max-w-md w-full bg-slate-900 border border-cyan-500/40 rounded-3xl p-5 shadow-2xl animate-pop" onclick="event.stopPropagation()">
+            <button onclick="closePhotoModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="text-center space-y-4">
+                <div class="relative mx-auto max-w-[280px] rounded-2xl p-1 bg-gradient-to-tr from-cyan-400 via-purple-500 to-emerald-400 shadow-xl shadow-cyan-500/20 overflow-hidden">
+                    <img src="https://i.ibb.co/mVNDv4TJ/1000336374-2.png" alt="Alaa Fawzy Mahmoud Adam Poster" class="w-full h-auto object-cover rounded-xl" onerror="this.src='https://ibb.co/mVNDv4TJ'">
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-white flex items-center justify-center gap-1.5">
+                        Alaa Fawzy Mahmoud Adam
+                        <i class="fa-solid fa-circle-check text-cyan-400 text-sm"></i>
+                    </h3>
+                    <p class="text-xs text-cyan-400 font-semibold mt-0.5">ICT Teacher | Inspiring Minds 💻✨</p>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 bg-slate-800/60 p-3 rounded-2xl border border-slate-700/50 text-xs">
+                    <div>
+                        <span class="block font-bold text-white">350</span>
+                        <span class="text-[10px] text-slate-400">Posts</span>
+                    </div>
+                    <div>
+                        <span class="block font-bold text-white">12K</span>
+                        <span class="text-[10px] text-slate-400">Followers</span>
+                    </div>
+                    <div>
+                        <span class="block font-bold text-white">980</span>
+                        <span class="text-[10px] text-slate-400">Following</span>
+                    </div>
+                </div>
+
+                <div class="pt-2 flex gap-2">
+                    <a href="https://drive.google.com/drive/folders/1ZsYinmZ8BQQE9DbkJzoFlflvFBNWLEMv" target="_blank" class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs py-2.5 rounded-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-google-drive"></i> Animation Videos
+                    </a>
+                    <button onclick="closePhotoModal()" class="px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs py-2.5 rounded-xl transition">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: CONTACT DETAILS MODAL -->
+    <div id="contact-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4" onclick="closeContactModal(event)">
+        <div class="relative max-w-lg w-full bg-slate-900 border border-emerald-500/40 rounded-3xl p-6 shadow-2xl animate-pop space-y-5" onclick="event.stopPropagation()">
+            <button onclick="closeContactModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-4">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-500 to-emerald-500 flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-cyan-500/20">
+                    <i class="fa-solid fa-id-card"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-white">Personal & Contact Information</h3>
+                    <p class="text-xs text-cyan-400 font-medium">Alaa Fawzy Mahmoud Adam</p>
+                </div>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                
+                <div class="p-3 bg-slate-800/60 rounded-xl border border-slate-700/50 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-phone text-emerald-400 text-base"></i>
+                        <div>
+                            <span class="block text-slate-400 text-[10px]">Mobile Phone / WhatsApp</span>
+                            <span class="text-white font-bold">+20 100 680 8425</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/201006808425" target="_blank" class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3 py-1.5 rounded-lg font-semibold hover:bg-emerald-500 hover:text-white transition">
+                        Chat WhatsApp
+                    </a>
+                </div>
+
+                <div class="p-3 bg-slate-800/60 rounded-xl border border-slate-700/50 flex items-center gap-3">
+                    <i class="fa-solid fa-location-dot text-cyan-400 text-base"></i>
+                    <div>
+                        <span class="block text-slate-400 text-[10px]">Location Address</span>
+                        <span class="text-white font-semibold">26-Aziz Antwan St., El-Siouf, Alexandria, Egypt</span>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-800/60 rounded-xl border border-slate-700/50 flex items-center gap-3">
+                    <i class="fa-solid fa-graduation-cap text-purple-400 text-base"></i>
+                    <div>
+                        <span class="block text-slate-400 text-[10px]">Degree & Education</span>
+                        <span class="text-white font-semibold">Bachelor of Education - Alexandria University (Biology | May 2005)</span>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-800/60 rounded-xl border border-slate-700/50 flex items-center gap-3">
+                    <i class="fa-solid fa-language text-yellow-400 text-base"></i>
+                    <div>
+                        <span class="block text-slate-400 text-[10px]">Language Proficiency</span>
+                        <span class="text-white font-semibold">Arabic (Native / Bilingual) | English (B2 Upper-Intermediate)</span>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-800/60 rounded-xl border border-slate-700/50 flex items-center gap-3">
+                    <i class="fa-solid fa-folder-open text-amber-400 text-base"></i>
+                    <div>
+                        <span class="block text-slate-400 text-[10px]">Direct Media Drives</span>
+                        <div class="flex gap-2 mt-1">
+                            <a href="https://drive.google.com/drive/folders/1ZsYinmZ8BQQE9DbkJzoFlflvFBNWLEMv" target="_blank" class="text-cyan-400 hover:underline">Animations Folder</a>
+                            <span class="text-slate-600">|</span>
+                            <a href="https://drive.google.com/drive/folders/1cnqTZ4k4VcXdZ44InJqsLiDJfK1VV_ZR" target="_blank" class="text-amber-400 hover:underline">Certificates Folder</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-2 flex gap-3">
+                <a href="tel:+201006808425" class="flex-1 bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-600 hover:to-emerald-600 text-white font-bold text-xs py-3 rounded-xl transition text-center shadow-lg">
+                    <i class="fa-solid fa-phone"></i> Call Now
+                </a>
+                <button onclick="closeContactModal()" class="px-5 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs py-3 rounded-xl transition">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive JavaScript Logic -->
+    <script>
+        const aiAnswers = {
+            summary: "Alaa Fawzy Mahmoud Adam brings over 16 years of distinguished K-12 ICT teaching and team leadership experience. She specializes in integrating cutting-edge AI models (Gemini, Claude, NotebookLM), digital animation videos, and gamification frameworks to deliver highly engaging computing education.",
+            ai_tools: "Alaa has mastered 20+ specialized AI & EdTech platforms: Claude AI & NotebookLM for lesson planning, Google Gemini for workspace integration, Canva & Gamma for AI visuals, ElevenLabs for voiceover generation, CapCut/Renderforest for animation videos, and Kahoot/Blooket/Wordwall for classroom gamification.",
+            leadership: "As ICT Team Leader at Salah-Aldin International School (SIS), Alaa leads curriculum alignment, mentors ICT instructors, designs computer science projects, and manages school-wide educational technology standards across primary and secondary stages.",
+            certs: "Her top global credentials include Gemini Certified Educator, One Million Prompters Certification, Adobe Generative AI Diploma, Microsoft Elevate Educator Expert, Teach-O-Gen AI in Education, PTT Hack Your Classroom, and professional Microsoft Credentials."
+        };
+
+        function askAI(key) {
+            const answerBox = document.getElementById('ai-answer-box');
+            const answerText = document.getElementById('ai-answer-text');
+            
+            if (aiAnswers[key]) {
+                answerText.innerHTML = aiAnswers[key];
+                answerBox.classList.remove('hidden');
+                answerBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        function toggleJobDetails(jobId) {
+            const details = document.getElementById(`${jobId}-details`);
+            if (details) {
+                details.classList.toggle('hidden');
+            }
+        }
+
+        // Modal Functions
+        function openPhotoModal() {
+            document.getElementById('photo-modal').classList.remove('hidden');
+        }
+
+        function closePhotoModal(event) {
+            document.getElementById('photo-modal').classList.add('hidden');
+        }
+
+        function openContactModal() {
+            document.getElementById('contact-modal').classList.remove('hidden');
+        }
+
+        function closeContactModal(event) {
+            document.getElementById('contact-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
